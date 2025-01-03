@@ -46,7 +46,9 @@ void reverse_rotate(t_stack *stack)
 
 void record_operation(t_stack *operations, long op)
 {
-  if (op == ROTATE_A && operations->tail->data == ROTATE_B)
+  if (!operations->tail)
+    stack_append(operations, op, 0);
+  else if (op == ROTATE_A && operations->tail->data == ROTATE_B)
     operations->tail->data = ROTATE_BOTH;
   else if (op == ROTATE_B && operations->tail->data == ROTATE_A)
     operations->tail->data = ROTATE_BOTH;

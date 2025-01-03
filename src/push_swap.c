@@ -24,6 +24,12 @@ static void print_operations(t_stack *stack)
       ft_printf("rra\n");
     else if (lst->data == REVERSE_R_B)
       ft_printf("rrb\n");
+    else if (lst->data == ROTATE_BOTH)
+      ft_printf("rr\n");
+    else if (lst->data == REVERSE_R_BOTH)
+      ft_printf("rrr\n");
+    else if (lst->data == SWAP_BOTH)
+      ft_printf("ss\n");
     lst = lst->next;
   }
 }
