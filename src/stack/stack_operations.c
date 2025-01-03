@@ -46,7 +46,20 @@ void reverse_rotate(t_stack *stack)
 
 void record_operation(t_stack *operations, long op)
 {
-  stack_append(operations, op, 0);
+  if (op == ROTATE_A && operations->tail->data == ROTATE_B)
+    operations->tail->data = ROTATE_BOTH;
+  else if (op == ROTATE_B && operations->tail->data == ROTATE_A)
+    operations->tail->data = ROTATE_BOTH;
+  else if (op == SWAP_A && operations->tail->data == SWAP_B)
+    operations->tail->data = SWAP_BOTH;
+  else if (op == SWAP_B && operations->tail->data == SWAP_A)
+    operations->tail->data = SWAP_BOTH;
+  else if (op == REVERSE_R_A && operations->tail->data == REVERSE_R_B)
+    operations->tail->data = REVERSE_R_BOTH;
+  else if (op == REVERSE_R_B && operations->tail->data == REVERSE_R_A)
+    operations->tail->data = SWAP_BOTH;
+  else
+    stack_append(operations, op, 0);
 }
 
 void perform_operation(t_scol *scntr, long op)
@@ -67,5 +80,6 @@ void perform_operation(t_scol *scntr, long op)
     reverse_rotate(scntr->a);
   else if (op == REVERSE_R_B)
     reverse_rotate(scntr->b);
-  stack_append(scntr->operations, op, 0);
+  record_operation(scntr->operations, op);
+  // stack_append(scntr->operations, op, 0);
 }
