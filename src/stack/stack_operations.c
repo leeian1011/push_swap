@@ -57,7 +57,7 @@ void record_operation(t_stack *operations, long op)
   else if (op == REVERSE_R_A && operations->tail->data == REVERSE_R_B)
     operations->tail->data = REVERSE_R_BOTH;
   else if (op == REVERSE_R_B && operations->tail->data == REVERSE_R_A)
-    operations->tail->data = SWAP_BOTH;
+    operations->tail->data = REVERSE_R_BOTH;
   else
     stack_append(operations, op, 0);
 }
