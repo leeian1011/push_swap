@@ -29,7 +29,7 @@ int		ft_tolower(char c);
 
 // string operations
 int		ft_atoi(const char *num);
-int		ft_atol(const char *num);
+long		ft_atol(const char *num);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dest, const char *src, size_t len);
 size_t	ft_strlcat(char *dest, const char *src, size_t len);

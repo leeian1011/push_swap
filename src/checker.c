@@ -132,13 +132,23 @@ int main(int argc, char **argv)
 
   scol = new_collection();
   if (argc == 1)
+  {
+    free_collection(scol);
     return (0);
+  }
   if (!extract_vinput(++argv, --argc, scol))
+  {
+    free_collection(scol);
     return (handle_error(scol));
+  }
   if (!retrieve_op(scol))
+  {
+    free_collection(scol);
     return (handle_error(scol));
+  }
   if (list_issorted(scol->a->head) && scol->operations->len > 0)
   {
+    free_collection(scol);
     ft_printf("KO\n");
     return (0);
   }
@@ -148,4 +158,5 @@ int main(int argc, char **argv)
   else
     ft_printf("KO\n");
   free_collection(scol);
+  return (0);
 }

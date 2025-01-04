@@ -7,7 +7,7 @@ void set_top_a(t_stack *a, t_bfcol *bf, int idx, int a_idx)
       while (a->head->data != bf->relationships[idx])
       {
         rotate(a);
-        record_operation(bf->operations[idx], ROTATE_A);
+        stack_append(bf->operations[idx], ROTATE_A, 0);
       }
     }
     else
@@ -15,7 +15,7 @@ void set_top_a(t_stack *a, t_bfcol *bf, int idx, int a_idx)
       while (a->head->data != bf->relationships[idx])
       {
         reverse_rotate(a);
-        record_operation(bf->operations[idx], REVERSE_R_A);
+        stack_append(bf->operations[idx], REVERSE_R_A, 0);
       }
     }
 }
@@ -27,7 +27,7 @@ void set_top_b(t_stack *b, t_bfcol *bf, int idx)
       while (b->head->data != stack_at(bf->b, idx))
       {
         rotate(b);
-        record_operation(bf->operations[idx], ROTATE_B);
+        stack_append(bf->operations[idx], ROTATE_B, 0);
       }
     }
     else
@@ -35,7 +35,7 @@ void set_top_b(t_stack *b, t_bfcol *bf, int idx)
       while (b->head->data != stack_at(bf->b, idx))
       {
         reverse_rotate(b);
-        record_operation(bf->operations[idx], REVERSE_R_B);
+        stack_append(bf->operations[idx], REVERSE_R_B, 0);
       }
     }
 

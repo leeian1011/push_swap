@@ -1,6 +1,7 @@
 #include "../includes/libft/libft.h"
 #include "stack/stack.h"
 #include <limits.h>
+#include <stdio.h>
 
 static int is_unique(t_stack *stack)
 {
@@ -9,10 +10,10 @@ static int is_unique(t_stack *stack)
 
   ptr = stack->head;
   itr = stack->head->next;
-  if (!itr)
-    return (1);
   while (ptr)
   {
+    if (!itr)
+      return (1);
     while (itr)
     {
       if (ptr->data == itr->data)
@@ -20,6 +21,7 @@ static int is_unique(t_stack *stack)
       itr = itr->next;
     }
     ptr = ptr->next;
+    itr = ptr->next;
   }
   return (1);
 }
@@ -51,14 +53,27 @@ int extract_str(char *nums, t_scol *scntr)
 static int sanity_check(char *input)
 {
   int len;
+  long inputn;
 
   if (ft_strlen(input) == 0)
     return (0);
+  inputn = ft_atol(input);
+  if (inputn > INT_MAX || inputn < INT_MIN)
+    return (0);
   while (*input)
-    if (*input == '-' || *input == ' ' || ft_isdigit(*input))
+  {
+    while (*input == ' ')
       input++;
+    if (*input == '-')
+      if (*(++input) == 0)
+        return (0);
+    while (ft_isdigit(*input))
+      input++;
+    if (*input == ' ' || *input == 0)
+      continue ;
     else
       return (0);
+  }
   return (1);
 }
 

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_atol(const char *num)
+long	ft_atol(const char *num)
 {
 	int						is_neg;
 	unsigned long	val;
