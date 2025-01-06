@@ -6,7 +6,7 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 09:15:22 by ialee             #+#    #+#             */
-/*   Updated: 2024/11/12 22:04:19 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/06 23:37:46 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ft_tolower(char c);
 
 // string operations
 int		ft_atoi(const char *num);
-long		ft_atol(const char *num);
+long	ft_atol(const char *num);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dest, const char *src, size_t len);
 size_t	ft_strlcat(char *dest, const char *src, size_t len);
@@ -131,7 +131,7 @@ int		handle_specifiers(const char **str, va_list *v_arg);
 int		ft_printf(const char *str, ...);
 
 // get_next_line prototypes
-#  define BUFFER_SIZE 1024
+# define BUFFER_SIZE 1024
 
 // String parsing utils
 char	*ft_strtonl(char *str);

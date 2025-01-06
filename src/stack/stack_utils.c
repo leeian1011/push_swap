@@ -1,140 +1,98 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/06 23:38:23 by ialee             #+#    #+#             */
+/*   Updated: 2025/01/07 00:46:14 by ialee            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "stack.h"
-#include <limits.h>
-#include <stdio.h>
 
-int stack_mean(t_stack *stack)
+t_stack	*stack_clone(t_stack *ori)
 {
-  int i = 0;
-  t_lstnode *itr;
+	t_stack		*copy;
+	t_lstnode	*itr;
 
-  itr = stack->head;
-  while (itr != NULL)
-  {
-    i += itr->data;
-    itr = itr->next;
-  }
-  return (i / stack->len);
+	itr = ori->head;
+	copy = malloc(sizeof(t_stack));
+	copy->head = NULL;
+	copy->tail = NULL;
+	copy->len = 0;
+	while (itr)
+	{
+		stack_append(copy, itr->data, itr->index);
+		itr = itr->next;
+	}
+	itr = copy->head;
+	while (itr->next != NULL)
+		itr = itr->next;
+	copy->tail = itr;
+	return (copy);
 }
 
-int stack_max(t_stack *stack)
+long	stack_find(t_stack *stack, long data)
 {
-  int i;
-  t_lstnode *itr;
+	long		i;
+	t_lstnode	*itr;
 
-  itr = stack->head;
-  i = itr->data;
-  while (itr != NULL)
-  {
-    if (i < itr->data)
-      i = itr->data;
-    itr = itr->next;
-  }
-  return (i);
+	i = 1;
+	itr = stack->head;
+	while (itr)
+	{
+		if (itr->data == data)
+			return (i);
+		itr = itr->next;
+		i++;
+	}
+	return (i);
 }
 
-int stack_min(t_stack *stack)
+void	stack_sort(t_stack *stack)
 {
-  int i;
-  t_lstnode *itr;
+	t_lstnode	*itr;
+	int			index;
 
-  itr = stack->head;
-  i = itr->data;
-  while (itr != NULL)
-  {
-    if (i > itr->data)
-      i = itr->data;
-    itr = itr->next;
-  }
-  return (i);
+	index = 1;
+	sort_list(&stack->head);
+	itr = stack->head->next;
+	if (!itr)
+		return ;
+	while (itr->next != NULL)
+	{
+		itr->index = index++;
+		itr = itr->next;
+	}
+	itr->index = index;
+	stack->tail = itr;
 }
 
-t_stack *stack_clone(t_stack *ori)
+void	perform_operation(t_scol *scntr, long op)
 {
-  t_stack *copy;
-  t_lstnode *itr;
-
-  itr = ori->head;
-  copy = malloc(sizeof(t_stack));
-  copy->head = NULL;
-  copy->tail = NULL;
-  copy->len = 0;
-  while (itr)
-  {
-    stack_append(copy, itr->data, itr->index);
-    itr = itr->next;
-  }
-  itr = copy->head;
-  while (itr->next != NULL)
-    itr = itr->next;
-  copy->tail = itr;
-  return (copy);
+	if (op == PUSH_A)
+		push(&scntr->b, &scntr->a);
+	else if (op == PUSH_B)
+		push(&scntr->a, &scntr->b);
+	else if (op == ROTATE_A)
+		rotate(scntr->a);
+	else if (op == ROTATE_B)
+		rotate(scntr->b);
+	else if (op == SWAP_A)
+		swap(scntr->a);
+	else if (op == SWAP_B)
+		swap(scntr->b);
+	else if (op == REVERSE_R_A)
+		reverse_rotate(scntr->a);
+	else if (op == REVERSE_R_B)
+		reverse_rotate(scntr->b);
+	record_operation(scntr->operations, op);
 }
 
-long stack_find(t_stack *stack, long data)
+void	free_stack(t_stack *stack)
 {
-  long i;
-  t_lstnode *itr;
-
-  i = 1;
-  itr = stack->head;
-  while(itr)
-  {
-    if (itr->data == data)
-      return (i);
-    itr = itr->next;
-    i++;
-  }
-  return (i);
-}
-
-/// Unsafe if index > stack->len.
-long stack_at(t_stack *stack, int index)
-{
-  t_lstnode *tmp;
-
-  tmp = stack->head;
-  if (!stack->head)
-    return (0);
-  if (index == 0)
-      return (tmp->data);
-  while (--index > 0)
-    tmp = tmp->next;
-  return (tmp->data);
-}
-
-long stack_set_index(t_stack *stack, long data, long index)
-{
-  t_lstnode *tmp;
-
-  tmp = stack->head;
-  while (tmp->data != data)
-    tmp = tmp->next;
-  if (!tmp)
-    return (-1);
-  tmp->index = index;
-  return (0);
-}
-
-void stack_sort(t_stack *stack)
-{
-  t_lstnode *itr;
-  int index = 1;
-
-  sort_list(&stack->head);
-  itr = stack->head->next;
-  if (!itr)
-    return ;
-  while (itr->next != NULL)
-  {
-    itr->index = index++;
-    itr = itr->next;
-  }
-  itr->index = index;
-  stack->tail = itr;
-}
-
-void free_stack(t_stack *stack)
-{
-  free_list(stack->head);
-  free(stack);
+	free_list(stack->head);
+	free(stack);
 }

@@ -6,7 +6,7 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 20:12:47 by ialee             #+#    #+#             */
-/*   Updated: 2024/12/03 22:34:03 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/06 23:37:26 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ static void	fmth_ec(t_fmt *fmt, char *hex, size_t sz, size_t *idx)
 			fmt->buf[copy_hex_len] = ft_toupper(fmt->buf[copy_hex_len]);
 	fmt->width_len -= hex_len;
 }
-
 
 /// Prints the passed in variadic argument (int as hex)
 /// along with it's appropriate flags.

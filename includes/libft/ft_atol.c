@@ -6,7 +6,7 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:29:53 by ialee             #+#    #+#             */
-/*   Updated: 2025/01/03 10:53:45 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/06 23:36:56 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 long	ft_atol(const char *num)
 {
-	int						is_neg;
+	int				is_neg;
 	unsigned long	val;
 
 	val = 0;

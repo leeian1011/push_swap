@@ -6,7 +6,7 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 22:22:48 by ialee             #+#    #+#             */
-/*   Updated: 2024/12/03 23:10:15 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/06 23:37:17 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int	fmtstr_zutil(t_fmt *fmt, size_t index, long len, char *arg)
 	}
 	return (write(1, fmt->buf, index));
 }
-
 
 /// fmtint_width_util
 /// fmtptr utility function that handles scenarios for varying width with flags
