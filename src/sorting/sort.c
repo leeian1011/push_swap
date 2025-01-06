@@ -6,7 +6,7 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:17:43 by ialee             #+#    #+#             */
-/*   Updated: 2025/01/07 00:20:17 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/07 00:57:30 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	brute_force_b(t_scol *scntr)
 
 void	sort(t_scol *scntr)
 {
-	int	min;
+	unsigned int	min;
 
 	if (list_issorted(scntr->a->head))
 		return ;

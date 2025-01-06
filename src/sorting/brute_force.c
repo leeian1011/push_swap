@@ -6,7 +6,7 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:14:06 by ialee             #+#    #+#             */
-/*   Updated: 2025/01/07 00:15:12 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/07 00:59:09 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ static t_bfcol	*new_brute_force(t_scol *stack)
 
 void	fill_closest(t_bfcol *bf)
 {
-	t_lstnode	*itr;
-	long		b_data;
-	int			i;
-	long		smallest_diff;
+	t_lstnode		*itr;
+	long			b_data;
+	unsigned int	i;
+	long			smallest_diff;
 
 	i = 0;
 	itr = bf->a->head;
@@ -73,7 +73,6 @@ void	fill_operations(t_bfcol *bf)
 {
 	int		i;
 	int		a_index;
-	long	b_data;
 	t_stack	*a_copy;
 	t_stack	*b_copy;
 
@@ -108,9 +107,9 @@ static void	free_bf(t_bfcol *bf)
 
 t_stack	*brute_force_pairs(t_scol *stack)
 {
-	t_bfcol	*bf;
-	t_stack	*cheapest;
-	int		i;
+	t_bfcol				*bf;
+	t_stack				*cheapest;
+	unsigned int		i;
 
 	i = 0;
 	bf = new_brute_force(stack);

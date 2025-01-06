@@ -6,22 +6,12 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 23:56:37 by ialee             #+#    #+#             */
-/*   Updated: 2025/01/06 23:57:12 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/07 00:56:20 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 #include <unistd.h>
-
-static t_stack	*new_stack(long data, t_stack *next, t_stack *prev)
-{
-	t_stack	*stack;
-
-	stack = malloc(sizeof(t_stack));
-	stack->head = NULL;
-	stack->tail = NULL;
-	return (stack);
-}
 
 void	*stack_append(t_stack *stack, long data, long index)
 {

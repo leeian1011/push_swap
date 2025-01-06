@@ -6,13 +6,13 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:16:05 by ialee             #+#    #+#             */
-/*   Updated: 2025/01/07 00:16:05 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/07 01:00:00 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
 
-void	set_top_a(t_stack *a, t_bfcol *bf, int idx, int a_idx)
+void	set_top_a(t_stack *a, t_bfcol *bf, int idx, unsigned int a_idx)
 {
 	if (a_idx <= ((bf->a->len / 2) + (bf->a->len % 2)))
 	{
@@ -32,7 +32,7 @@ void	set_top_a(t_stack *a, t_bfcol *bf, int idx, int a_idx)
 	}
 }
 
-void	set_top_b(t_stack *b, t_bfcol *bf, int idx)
+void	set_top_b(t_stack *b, t_bfcol *bf, unsigned int idx)
 {
 	if (idx <= ((bf->b->len / 2) + (bf->b->len % 2)))
 	{

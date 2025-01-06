@@ -6,7 +6,7 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:08:05 by ialee             #+#    #+#             */
-/*   Updated: 2025/01/07 00:46:35 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/07 00:56:48 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	push(t_stack **from, t_stack **to)
 
 void	rotate(t_stack *stack)
 {
-	t_stack	*tmp;
-
 	if (!stack->head)
 		return ;
 	stack_append(stack, stack->head->data, stack->head->index);
@@ -47,8 +45,6 @@ void	rotate(t_stack *stack)
 
 void	reverse_rotate(t_stack *stack)
 {
-	t_lstnode	*tmp;
-
 	if (!stack->head)
 		return ;
 	stack_prepend(stack, stack->tail->data, stack->tail->index);

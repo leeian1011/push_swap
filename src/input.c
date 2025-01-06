@@ -6,7 +6,7 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:25:09 by ialee             #+#    #+#             */
-/*   Updated: 2025/01/07 00:25:29 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/07 00:59:49 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	extract_str(char *nums, t_scol *scntr)
 
 static int	sanity_check(char *input)
 {
-	int		len;
 	long	inputn;
 
 	if (ft_strlen(input) == 0)

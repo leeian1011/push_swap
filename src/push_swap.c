@@ -6,7 +6,7 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:27:05 by ialee             #+#    #+#             */
-/*   Updated: 2025/01/07 00:32:00 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/07 00:55:57 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ void	print_operations(t_stack *stack)
 
 static int	handle_argv(int argc, char **argv, t_scol **scntr)
 {
-	int	i;
-
 	if (argc == 1)
 		return (0);
 	else
