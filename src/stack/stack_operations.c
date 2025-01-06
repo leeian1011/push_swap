@@ -49,17 +49,35 @@ void record_operation(t_stack *operations, long op)
   if (!operations->tail)
     stack_append(operations, op, 0);
   else if (op == ROTATE_A && operations->tail->data == ROTATE_B)
-    operations->tail->data = ROTATE_BOTH;
+  {
+    free(stack_pop_right(operations));
+    stack_append(operations, ROTATE_BOTH, 0);
+  }
   else if (op == ROTATE_B && operations->tail->data == ROTATE_A)
-    operations->tail->data = ROTATE_BOTH;
+  {
+    free(stack_pop_right(operations));
+    stack_append(operations, ROTATE_BOTH, 0);
+  }
   else if (op == SWAP_A && operations->tail->data == SWAP_B)
-    operations->tail->data = SWAP_BOTH;
+  {
+    free(stack_pop_right(operations));
+    stack_append(operations, SWAP_BOTH, 0);
+  }
   else if (op == SWAP_B && operations->tail->data == SWAP_A)
-    operations->tail->data = SWAP_BOTH;
+  {
+    free(stack_pop_right(operations));
+    stack_append(operations, SWAP_BOTH, 0);
+  }
   else if (op == REVERSE_R_A && operations->tail->data == REVERSE_R_B)
-    operations->tail->data = REVERSE_R_BOTH;
+  {
+    free(stack_pop_right(operations));
+    stack_append(operations, REVERSE_R_BOTH, 0);
+  }
   else if (op == REVERSE_R_B && operations->tail->data == REVERSE_R_A)
-    operations->tail->data = REVERSE_R_BOTH;
+  {
+    free(stack_pop_right(operations));
+    stack_append(operations, REVERSE_R_BOTH, 0);
+  }
   else
     stack_append(operations, op, 0);
 }
@@ -83,5 +101,4 @@ void perform_operation(t_scol *scntr, long op)
   else if (op == REVERSE_R_B)
     reverse_rotate(scntr->b);
   record_operation(scntr->operations, op);
-  // stack_append(scntr->operations, op, 0);
 }

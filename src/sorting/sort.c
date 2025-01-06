@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 void reverse_sort(t_scol *scntr)
 {
