@@ -6,14 +6,13 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:25:09 by ialee             #+#    #+#             */
-/*   Updated: 2025/01/07 00:59:49 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/07 01:05:40 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft/libft.h"
 #include "stack/stack.h"
 #include <limits.h>
-#include <stdio.h>
 
 static int	is_unique(t_stack *stack)
 {
@@ -40,10 +39,8 @@ static int	is_unique(t_stack *stack)
 
 int	extract_str(char *nums, t_scol *scntr)
 {
-	char	*iterator;
 	long	extracted_num;
 
-	iterator = nums;
 	while (*nums)
 	{
 		while (*nums == ' ')

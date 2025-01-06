@@ -6,7 +6,7 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:20:24 by ialee             #+#    #+#             */
-/*   Updated: 2025/01/07 00:21:15 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/07 01:06:07 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,9 @@ void	sort_3(t_scol *stack)
 
 void	sort_4(t_scol *stack)
 {
-	t_lstnode	*itr;
 	int			min;
 	int			is_4;
 
-	itr = stack->a->head;
 	is_4 = stack->a->len == 4;
 	if (is_4)
 	{
@@ -80,11 +78,9 @@ static void	handle_5(t_scol *stack, int is_5)
 
 void	sort_5(t_scol *stack)
 {
-	t_lstnode	*itr;
 	int			max;
 	int			is_5;
 
-	itr = stack->a->head;
 	max = stack_max(stack->a);
 	is_5 = stack->a->len == 5;
 	if (is_5)
