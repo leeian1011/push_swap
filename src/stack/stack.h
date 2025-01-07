@@ -61,7 +61,7 @@ void		*stack_prepend(t_stack *stack, long data, long data_idx);
 void		*stack_pop_left(t_stack *stack);
 void		*stack_pop_right(t_stack *stack);
 t_stack		*stack_clone(t_stack *stack);
-long		stack_at(t_stack *stack, int index);
+long		stack_at(t_stack *stack, unsigned int index);
 int			stack_mean(t_stack *stack);
 int			stack_min(t_stack *stack);
 int			stack_max(t_stack *stack);

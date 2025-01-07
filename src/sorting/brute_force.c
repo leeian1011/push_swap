@@ -27,17 +27,17 @@ static t_bfcol	*new_brute_force(t_scol *stack)
 	bf->b = stack_clone(stack->b);
 	bf->relationships = malloc(sizeof(int) * count);
 	bf->rlen = count;
-	bf->operations = malloc(sizeof(t_stack *) * count);
+	bf->operations = malloc(sizeof(t_stack));
+  bf->operations->head = NULL;
+  bf->operations->tail = NULL;
+  bf->operations->len = 0;
+	bf->temp_operations = malloc(sizeof(t_stack));
+  bf->temp_operations->head = NULL;
+  bf->temp_operations->tail = NULL;
+  bf->temp_operations->len = 0;
 	while (i < count)
-	{
-		bf->relationships[i] = 0;
-		bf->operations[i] = malloc(sizeof(t_stack));
-		bf->operations[i]->len = 0;
-		bf->operations[i]->head = NULL;
-		bf->operations[i++]->tail = NULL;
-	}
+		bf->relationships[i++] = -1;
 	bf->least = 0;
-	bf->least_idx = 0;
 	return (bf);
 }
 
@@ -77,14 +77,16 @@ void	fill_operations(t_bfcol *bf)
 	t_stack	*b_copy;
 
 	i = 0;
+  bf->least = INT_MAX;
 	while (i < bf->rlen)
 	{
 		a_copy = stack_clone(bf->a);
 		b_copy = stack_clone(bf->b);
-		a_index = stack_find(bf->a, bf->relationships[i]);
-		set_top_a(a_copy, bf, i, a_index);
-		set_top_b(b_copy, bf, i);
-		record_operation(bf->operations[i], PUSH_A);
+		a_index = stack_find(a_copy, bf->relationships[i]);
+    if (set_top_a(a_copy, bf, i, a_index))
+      if (set_top_b(b_copy, bf, i))
+        measure(bf);
+    restart(bf);
 		i++;
 		free_stack(a_copy);
 		free_stack(b_copy);
@@ -93,12 +95,8 @@ void	fill_operations(t_bfcol *bf)
 
 static void	free_bf(t_bfcol *bf)
 {
-	int	i;
-
-	i = 0;
-	while (i < bf->rlen)
-		free_stack(bf->operations[i++]);
-	free(bf->operations);
+  free_stack(bf->temp_operations);
+	free_stack(bf->operations);
 	free_stack(bf->a);
 	free_stack(bf->b);
 	free(bf->relationships);
@@ -109,20 +107,11 @@ t_stack	*brute_force_pairs(t_scol *stack)
 {
 	t_bfcol				*bf;
 	t_stack				*cheapest;
-	unsigned int		i;
 
-	i = 0;
 	bf = new_brute_force(stack);
 	fill_closest(bf);
 	fill_operations(bf);
-	cheapest = bf->operations[0];
-	while (i < bf->b->len)
-	{
-		if (cheapest->len > bf->operations[i]->len)
-			cheapest = bf->operations[i];
-		i++;
-	}
-	cheapest = stack_clone(cheapest);
+	cheapest = stack_clone(bf->operations);
 	free_bf(bf);
 	return (cheapest);
 }

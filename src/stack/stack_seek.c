@@ -60,7 +60,7 @@ int	stack_min(t_stack *stack)
 }
 
 /// Unsafe if index > stack->len.
-long	stack_at(t_stack *stack, int index)
+long	stack_at(t_stack *stack, unsigned int index)
 {
 	t_lstnode	*tmp;
 

@@ -36,7 +36,7 @@ static void	split_a(t_scol *scntr)
 	{
 		itr = scntr->a->head;
 		mean = stack_mean(scntr->a);
-		if (itr->data < mean)
+		if (itr->data < mean && itr->data != scntr->max_data) 
 			perform_operation(scntr, PUSH_B);
 		else
 			perform_operation(scntr, ROTATE_A);

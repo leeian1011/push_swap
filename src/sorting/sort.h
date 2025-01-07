@@ -15,11 +15,11 @@
 # include "../stack/stack.h"
 
 typedef struct s_bfcol {
-	t_stack	**operations;
+  t_stack *temp_operations;
+	t_stack	*operations;
 	t_stack	*a;
 	t_stack	*b;
 	long	least;
-	int		least_idx;
 	int		*relationships;
 	int		rlen;
 }	t_bfcol;
@@ -32,6 +32,8 @@ void	reverse_sort(t_scol *scntr);
 void	sort(t_scol *scntr);
 
 t_stack	*brute_force_pairs(t_scol *stack);
-void	set_top_a(t_stack *a, t_bfcol *bf, int idx, unsigned int a_idx);
-void	set_top_b(t_stack *b, t_bfcol *bf, unsigned int idx);
+int	set_top_a(t_stack *a, t_bfcol *bf, int idx, unsigned int a_idx);
+int	set_top_b(t_stack *b, t_bfcol *bf, unsigned int idx);
+int restart(t_bfcol *bf);
+void measure(t_bfcol *bf);
 #endif
