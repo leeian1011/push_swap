@@ -6,12 +6,11 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:17:43 by ialee             #+#    #+#             */
-/*   Updated: 2025/01/07 00:57:30 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/07 11:22:26 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
-#include <stdio.h>
 
 void	reverse_sort(t_scol *scntr)
 {
@@ -36,7 +35,7 @@ static void	split_a(t_scol *scntr)
 	{
 		itr = scntr->a->head;
 		mean = stack_mean(scntr->a);
-		if (itr->data < mean && itr->data != scntr->max_data) 
+		if (itr->data < mean && itr->data != scntr->max_data)
 			perform_operation(scntr, PUSH_B);
 		else
 			perform_operation(scntr, ROTATE_A);

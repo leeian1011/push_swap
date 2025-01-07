@@ -6,7 +6,7 @@
 /*   By: ialee <ialee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:14:06 by ialee             #+#    #+#             */
-/*   Updated: 2025/01/07 00:59:09 by ialee            ###   ########.fr       */
+/*   Updated: 2025/01/07 11:21:50 by ialee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static t_bfcol	*new_brute_force(t_scol *stack)
 	bf->relationships = malloc(sizeof(int) * count);
 	bf->rlen = count;
 	bf->operations = malloc(sizeof(t_stack));
-  bf->operations->head = NULL;
-  bf->operations->tail = NULL;
-  bf->operations->len = 0;
+	bf->operations->head = NULL;
+	bf->operations->tail = NULL;
+	bf->operations->len = 0;
 	bf->temp_operations = malloc(sizeof(t_stack));
-  bf->temp_operations->head = NULL;
-  bf->temp_operations->tail = NULL;
-  bf->temp_operations->len = 0;
+	bf->temp_operations->head = NULL;
+	bf->temp_operations->tail = NULL;
+	bf->temp_operations->len = 0;
 	while (i < count)
 		bf->relationships[i++] = -1;
 	bf->least = 0;
@@ -77,16 +77,16 @@ void	fill_operations(t_bfcol *bf)
 	t_stack	*b_copy;
 
 	i = 0;
-  bf->least = INT_MAX;
+	bf->least = INT_MAX;
 	while (i < bf->rlen)
 	{
 		a_copy = stack_clone(bf->a);
 		b_copy = stack_clone(bf->b);
 		a_index = stack_find(a_copy, bf->relationships[i]);
-    if (set_top_a(a_copy, bf, i, a_index))
-      if (set_top_b(b_copy, bf, i))
-        measure(bf);
-    restart(bf);
+		if (set_top_a(a_copy, bf, i, a_index))
+			if (set_top_b(b_copy, bf, i))
+				measure(bf);
+		restart(bf);
 		i++;
 		free_stack(a_copy);
 		free_stack(b_copy);
@@ -95,7 +95,7 @@ void	fill_operations(t_bfcol *bf)
 
 static void	free_bf(t_bfcol *bf)
 {
-  free_stack(bf->temp_operations);
+	free_stack(bf->temp_operations);
 	free_stack(bf->operations);
 	free_stack(bf->a);
 	free_stack(bf->b);
